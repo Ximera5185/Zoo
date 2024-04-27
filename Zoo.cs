@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Zoo
 {
@@ -14,39 +11,34 @@ namespace Zoo
 
         private CreatorAnimals _creatorAnimals = new CreatorAnimals();
 
-
         public Zoo()
         {
             AddEnclosures();
+
             Run();
-
-
         }
 
-        private void Show() 
+        private void Show()
         {
             for (int i = 0; i < _enclosures.Count; i++)
             {
-                Console.WriteLine($"{i+1} {_enclosures[i].Name}");
-                
+                Console.WriteLine($"{i + 1} {_enclosures [i].Name}");
             }
         }
-        private void AddEnclosures() 
+        private void AddEnclosures()
         {
             int minValue = 4;
             int maxValue = 7;
 
-            for (int i = 0; i < UserUtils.GetRandomNumber(minValue,maxValue); i++)
+            for (int i = 0; i < UserUtils.GetRandomNumber(minValue, maxValue); i++)
             {
-                 _enclosures.Add(_creatorEnclosure.Create());
+                _enclosures.Add(_creatorEnclosure.Create());
             }
         }
         private void Run()
         {
-            const string CommandAddFish = "1";
-            const string CommandRemoveFish = "2";
-            const string CommandNextMove = "3";
-            const string CommandExit = "4";
+            const string CommandSelectionEnclosure = "1";
+            const string CommandExit = "2";
 
             string userCommand;
 
@@ -54,31 +46,18 @@ namespace Zoo
 
             while (isProgrammWorck)
             {
-                //Console.Clear();
-
-                Show();
-
+                Console.Clear();
                 Console.WriteLine($"В зоопарке {Enclosure.InstanceCounter} Вальеров\n" +
                 $"\n" +
-                $"Чтобы добавить рыбку нажмите {CommandAddFish}\n" +
-                $"Чтобы достать рыбку введите {CommandRemoveFish}\n" +
-                $"Сделать следующий ход {CommandNextMove}\n" +
+                $"Чтобы перейти к вальерам введите  {CommandSelectionEnclosure}\n" +
                 $"Выход из программы {CommandExit}");
 
                 userCommand = Console.ReadLine();
 
                 switch (userCommand)
                 {
-                    case CommandAddFish:
-                       
-                        break;
-
-                    case CommandRemoveFish:
-                       
-                        break;
-
-                    case CommandNextMove:
-                        
+                    case CommandSelectionEnclosure:
+                        Showenclosure();
                         break;
 
                     case CommandExit:
@@ -88,9 +67,41 @@ namespace Zoo
             }
         }
 
-        private void ShowInfo() 
+        private void Showenclosure()
         {
-            
+            Console.Clear();
+                Show();
+
+            int index = GetUserNumber("Введите порядковфй номер вальера");
+
+            if (index < _enclosures.Count && index >= 0)
+            {
+                _enclosures [index].ShowAnimals();
+            }
+            else
+            {
+                Console.WriteLine("Нет такого порядкового номера, нажмите любую клавишу для продолжения");
+                Console.ReadKey();
+            }
         }
+
+        private int GetUserNumber(string message)
+        {
+            int number = 0;
+
+            string input = "";
+
+            while (int.TryParse(input, out number) == false)
+            {
+                Console.WriteLine(message);
+
+                input = Console.ReadLine();
+
+                Console.WriteLine("Вы ввели не целое число.");
+            }
+
+            return number;
+        }
+
     }
 }

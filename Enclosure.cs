@@ -37,7 +37,9 @@ namespace Zoo
                 animal.ShowInfo();   
             }
 
-            Console.WriteLine();
+            Console.WriteLine("Чтоб отойти от вальера нажмите любую клавишу");
+            Console.ReadKey();
+
         }
 
         private void AddAnimal(int numberAnimals) 
