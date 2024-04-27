@@ -21,8 +21,9 @@ namespace Zoo
             InstanceCounter++;
         }
 
-        public string Name { get; private set; }
         public static int InstanceCounter { get; private set; }
+
+        public string Name { get; private set; }
 
         public void ShowAnimals()
         {
