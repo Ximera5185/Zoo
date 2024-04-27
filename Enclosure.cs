@@ -12,11 +12,20 @@ namespace Zoo
        private List<Animal> _animals = new List<Animal>();
 
        private CreatorAnimals _creatorAnimals = new CreatorAnimals();
-       Random random = new Random();
-       public Enclosure() 
+       public Enclosure(string name) 
        {
-            AddAnimal(random.Next(1,10));
+            int minValue = 1;
+            int maxValue = 10;
+
+            Name = name;
+
+            AddAnimal(UserUtils.GetRandomNumber(minValue,maxValue));
+
+            InstanceCounter++;
        }
+
+       public string Name { get; private set; }
+        public static int InstanceCounter { get; private set; }
         public int Capacity { get; private set; }
 
         public void ShowAnimals() 
@@ -27,6 +36,8 @@ namespace Zoo
             {
                 animal.ShowInfo();   
             }
+
+            Console.WriteLine();
         }
 
         private void AddAnimal(int numberAnimals) 

@@ -4,33 +4,41 @@ using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Zoo
 {
     internal class CreatorEnclosure
     {
-        private List<Enclosure> _enclosures = new List<Enclosure>();
+        private List<string> _enclosureTypes = new List<string>();
 
-        private Enclosure _enclosure;
-        public void Create() 
+        public CreatorEnclosure() 
         {
-            Random random = new Random();
-
-            for (int i = 0; i < random.Next(4,10); i++)
-            {
-                _enclosures.Add(_enclosure = new Enclosure());
-                
-            }
+            AddTypes();
         }
 
-
-        public void Show() 
+        public Enclosure Create() 
         {
-            foreach (Enclosure enclosure in _enclosures)
-            {
-                enclosure.ShowAnimals();
-            }
+            string name = "";
+
+            int index = UserUtils.GetRandomNumber(0,_enclosureTypes.Count);
+
+            name = _enclosureTypes[index];
+
+            _enclosureTypes.RemoveAt(index);
+
+            return new Enclosure(name);
         }
-        
+
+        private void AddTypes() 
+        {
+            _enclosureTypes.Add("Львы");
+            _enclosureTypes.Add("Волки");
+            _enclosureTypes.Add("Кабаны");
+            _enclosureTypes.Add("Рыси");
+            _enclosureTypes.Add("Лошади");
+            _enclosureTypes.Add("Слоны");
+            _enclosureTypes.Add("Гипарды");
+        }
     }
 }

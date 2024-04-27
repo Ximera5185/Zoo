@@ -9,30 +9,36 @@ namespace Zoo
     // Животное
     internal class Animal
     {
-        Random random = new Random();
-        public Animal(string name, string sound) 
+        public Animal(string name, string sound)
         {
+            Name = name;
+
+            Sound = sound;
+
             InstanceCounter++;
 
             Gender = GetGender();
         }
-        
+
         public static int InstanceCounter { get; private set; }
 
         public string Name { get; private set; }
         public string Gender { get; private set; }
         public string Sound { get; private set; }
 
-        public void ShowInfo() 
+        public void ShowInfo()
         {
-            Console.WriteLine($"Имя {Name} Пол{Gender} Звук{Sound}");
+            Console.WriteLine($"Имя-{Name} Пол-{Gender} Звук-{Sound}");
         }
 
-        private string GetGender() 
+        private string GetGender()
         {
-            int rundomNamber = random.Next(0,2);
+            int minValue = 0;
+            int maxValue = 2;
 
-            if (rundomNamber == 0)
+            int rundomNamber = UserUtils.GetRandomNumber(minValue, maxValue);
+
+            if (rundomNamber == minValue)
             {
                 return "Самец";
             }
