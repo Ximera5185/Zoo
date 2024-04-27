@@ -10,9 +10,9 @@ namespace Zoo
 
             Sound = sound;
 
-            InstanceCounter++;
-
             Gender = GetGender();
+
+            InstanceCounter++;
         }
 
         public static int InstanceCounter { get; private set; }
