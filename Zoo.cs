@@ -33,9 +33,10 @@ namespace Zoo
         }
         private void AddEnclosures() 
         {
+            int minValue = 4;
             int maxValue = 7;
 
-            for (int i = 0; i < UserUtils.GetRandomNumber(0,maxValue); i++)
+            for (int i = 0; i < UserUtils.GetRandomNumber(minValue,maxValue); i++)
             {
                  _enclosures.Add(_creatorEnclosure.Create());
             }
