@@ -91,13 +91,15 @@ namespace Zoo
 
             string input = "";
 
-            while (int.TryParse(input, out number) == false)
-            {
                 Console.WriteLine(message);
 
-                input = Console.ReadLine();
+            while (int.TryParse(Console.ReadLine(), out number) == false)
+            {
+
+               // input = Console.ReadLine();
 
                 Console.WriteLine("Вы ввели не целое число.");
+                Console.WriteLine(message);
             }
 
             return number;

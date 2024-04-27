@@ -33,19 +33,11 @@ namespace Zoo
 
         private string GetGender()
         {
-            int minValue = 0;
-            int maxValue = 2;
+            string [] genders = { "Самец", "Самка" };
 
-            int rundomNamber = UserUtils.GetRandomNumber(minValue, maxValue);
+            int randomNumber = UserUtils.GetRandomNumber(genders.Length);
 
-            if (rundomNamber == minValue)
-            {
-                return "Самец";
-            }
-            else
-            {
-                return "Самка";
-            }
+            return genders[randomNumber];
         }
     }
 }

@@ -14,5 +14,10 @@ namespace Zoo
         {
             return s_random.Next(minValue, maxValue);
         }
+
+        public static int GetRandomNumber( int maxValue)
+        {
+            return s_random.Next( maxValue);
+        }
     }
 }
