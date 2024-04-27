@@ -25,6 +25,7 @@ namespace Zoo
                 Console.WriteLine($"{i + 1} {_enclosures [i].Name}");
             }
         }
+
         private void AddEnclosures()
         {
             int minValue = 4;
@@ -35,6 +36,7 @@ namespace Zoo
                 _enclosures.Add(_creatorEnclosure.Create());
             }
         }
+
         private void Run()
         {
             const string CommandSelectionEnclosure = "1";
@@ -48,7 +50,7 @@ namespace Zoo
             {
                 Console.Clear();
                 Console.WriteLine($"В зоопарке {Enclosure.InstanceCounter} Вальеров\n" +
-                $"\n" +
+                $"Всего животных в зоопарке {Animal.InstanceCounter}\n" +
                 $"Чтобы перейти к вальерам введите  {CommandSelectionEnclosure}\n" +
                 $"Выход из программы {CommandExit}");
 
@@ -57,7 +59,7 @@ namespace Zoo
                 switch (userCommand)
                 {
                     case CommandSelectionEnclosure:
-                        Showenclosure();
+                        ShowEnclosure();
                         break;
 
                     case CommandExit:
@@ -67,14 +69,15 @@ namespace Zoo
             }
         }
 
-        private void Showenclosure()
+        private void ShowEnclosure()
         {
             Console.Clear();
-                Show();
 
-            int index = GetUserNumber("Введите порядковфй номер вальера");
+            Show();
 
-            if (index < _enclosures.Count && index >= 0)
+            int index = GetUserNumber("Введите порядковфй номер вальера") -1;
+
+            if (index  < _enclosures.Count && index >= 0)
             {
                 _enclosures [index].ShowAnimals();
             }
@@ -89,14 +92,12 @@ namespace Zoo
         {
             int number = 0;
 
-            string input = "";
-
-                Console.WriteLine(message);
+            Console.WriteLine(message);
 
             while (int.TryParse(Console.ReadLine(), out number) == false)
             {
 
-               // input = Console.ReadLine();
+                // input = Console.ReadLine();
 
                 Console.WriteLine("Вы ввели не целое число.");
                 Console.WriteLine(message);
@@ -104,6 +105,5 @@ namespace Zoo
 
             return number;
         }
-
     }
 }

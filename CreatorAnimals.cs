@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Zoo
 {
@@ -10,34 +6,35 @@ namespace Zoo
     {
         private Dictionary<string, string> _dataSounds = new Dictionary<string, string>();
 
-        private List<string> _names = new List<string>();
+        private Dictionary<string, string> _names = new Dictionary<string, string>();
 
         public CreatorAnimals() 
         {
             AddName();
 
-            AddData();
+            AddSound();
         }
-        public Animal CreateAnimal() 
+        public Animal CreateAnimal(string enclosureName) 
         {
-            string name = GetDataName();
+            string name = GetName(enclosureName);
 
-            string sound = GetDataSound(name);
+            string sound = GetSound(name);
 
             return new Animal(name,sound);
         }
 
         private void AddName()
         {
-            _names.Add("Лев");
-            _names.Add("Волк");
-            _names.Add("Кабан");
-            _names.Add("Рысь");
-            _names.Add("Лошадь");
-            _names.Add("Слон");
-            _names.Add("Гипард");
+            _names.Add("Львы","Лев");
+            _names.Add("Волки", "Волк");
+            _names.Add("Кабаны", "Кабан");
+            _names.Add("Рыси", "Рысь");
+            _names.Add("Лошади", "Лошадь");
+            _names.Add("Слоны", "Слон");
+            _names.Add("Гипарды", "Гипард");
         }
-        private void AddData()
+
+        private void AddSound()
         {
             _dataSounds.Add("Лев", "Рык");
             _dataSounds.Add("Волк", "Вой");
@@ -48,18 +45,14 @@ namespace Zoo
             _dataSounds.Add("Гипард", "Рык");
         }
 
-        private string GetDataName()
+        private string GetName(string enclosureName)
         {
-            int minValue = 0;
-
-            return _names [UserUtils.GetRandomNumber(minValue, _names.Count)];
+            return _names [enclosureName];
         }
 
-        private string GetDataSound(string name)
+        private string GetSound(string name)
         {
             return _dataSounds [name];
         }
-
     }
-
 }

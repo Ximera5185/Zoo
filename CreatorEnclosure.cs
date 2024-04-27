@@ -1,44 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+﻿using System.Collections.Generic;
 
 namespace Zoo
 {
     internal class CreatorEnclosure
     {
-        private List<string> _enclosureTypes = new List<string>();
+        private List<string> _names = new List<string>();
 
         public CreatorEnclosure() 
         {
-            AddTypes();
+            AddName();
         }
 
         public Enclosure Create() 
         {
             string name = "";
 
-            int index = UserUtils.GetRandomNumber(0,_enclosureTypes.Count);
+            int index = UserUtils.GetRandomNumber(0,_names.Count);
 
-            name = _enclosureTypes[index];
+            name = _names[index];
 
-            _enclosureTypes.RemoveAt(index);
+            _names.RemoveAt(index);
 
             return new Enclosure(name);
         }
 
-        private void AddTypes() 
+        private void AddName() 
         {
-            _enclosureTypes.Add("Львы");
-            _enclosureTypes.Add("Волки");
-            _enclosureTypes.Add("Кабаны");
-            _enclosureTypes.Add("Рыси");
-            _enclosureTypes.Add("Лошади");
-            _enclosureTypes.Add("Слоны");
-            _enclosureTypes.Add("Гипарды");
+            _names.Add("Львы");
+            _names.Add("Волки");
+            _names.Add("Кабаны");
+            _names.Add("Рыси");
+            _names.Add("Лошади");
+            _names.Add("Слоны");
+            _names.Add("Гипарды");
         }
     }
 }
