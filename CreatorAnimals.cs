@@ -4,7 +4,7 @@ namespace Zoo
 {
     internal class CreatorAnimals
     {
-        private Dictionary<string, string> _dataSounds = new Dictionary<string, string>();
+        private Dictionary<string, string> _sounds = new Dictionary<string, string>();
 
         private Dictionary<string, string> _names = new Dictionary<string, string>();
 
@@ -36,13 +36,13 @@ namespace Zoo
 
         private void AddSound()
         {
-            _dataSounds.Add("Лев", "Рык");
-            _dataSounds.Add("Волк", "Вой");
-            _dataSounds.Add("Кабан", "Хрюканье");
-            _dataSounds.Add("Рысь", "Рык");
-            _dataSounds.Add("Лошадь", "Игого");
-            _dataSounds.Add("Слон", "Ту-ду");
-            _dataSounds.Add("Гипард", "Рык");
+            _sounds.Add("Лев", "Рык");
+            _sounds.Add("Волк", "Вой");
+            _sounds.Add("Кабан", "Хрюканье");
+            _sounds.Add("Рысь", "Рык");
+            _sounds.Add("Лошадь", "Игого");
+            _sounds.Add("Слон", "Ту-ду");
+            _sounds.Add("Гипард", "Рык");
         }
 
         private string GetName(string enclosureName)
@@ -52,7 +52,7 @@ namespace Zoo
 
         private string GetSound(string name)
         {
-            return _dataSounds [name];
+            return _sounds [name];
         }
     }
 }
