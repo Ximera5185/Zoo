@@ -4,11 +4,13 @@ namespace Zoo
 {
     internal class CreatorEnclosure
     {
+        private CreatorAnimals _creatorAnimals = new CreatorAnimals();
+
         private List<string> _names = new List<string>();
 
         public CreatorEnclosure() 
         {
-            AddName();
+            AddNames();
         }
 
         public Enclosure Create() 
@@ -24,15 +26,9 @@ namespace Zoo
             return new Enclosure(name);
         }
 
-        private void AddName() 
+        private void AddNames() 
         {
-            _names.Add("Львы");
-            _names.Add("Волки");
-            _names.Add("Кабаны");
-            _names.Add("Рыси");
-            _names.Add("Лошади");
-            _names.Add("Слоны");
-            _names.Add("Гипарды");
+            _names = _creatorAnimals.GetTypes();
         }
     }
 }
