@@ -96,9 +96,6 @@ namespace Zoo
 
             while (int.TryParse(Console.ReadLine(), out number) == false)
             {
-
-                // input = Console.ReadLine();
-
                 Console.WriteLine("Вы ввели не целое число.");
                 Console.WriteLine(message);
             }
